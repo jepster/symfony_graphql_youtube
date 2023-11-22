@@ -1,0 +1,7 @@
+Example:
+  type: object
+  config:
+    resolveField: '@=query("App\\ExampleResolver", info, value)'
+    fields:
+      text:
+        type: String!

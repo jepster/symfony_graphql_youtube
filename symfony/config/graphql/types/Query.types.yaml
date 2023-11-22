@@ -1,0 +1,8 @@
+Query:
+  type: object
+  config:
+    description: "The GraphQL Query Interface"
+    fields:
+      example:
+        type: Example
+        resolve: '@=query("App\\ExampleResolver::resolve")'

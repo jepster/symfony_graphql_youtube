@@ -1,0 +1,5 @@
+.idea
+node_modules
+symfony/var/
+.phpunit.result.cache
+.DS_Store
