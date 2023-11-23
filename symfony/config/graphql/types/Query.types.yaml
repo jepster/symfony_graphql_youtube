@@ -6,3 +6,9 @@ Query:
       example:
         type: Example
         resolve: '@=query("App\\ExampleResolver::resolve")'
+      greeting:
+        type: Greeting
+        resolve: '@=query("App\\GreetingResolver::resolve")'
+        args:
+          name:
+            type: String

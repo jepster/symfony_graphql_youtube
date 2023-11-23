@@ -1,0 +1,11 @@
+Greeting:
+  type: object
+  config:
+    resolveField: '@=query("App\\GreetingResolver", info, value)'
+    fields:
+      text:
+        type: String!
+        description: Prefix for the greeting. Comes before the name.
+        args:
+          name:
+            type: String
