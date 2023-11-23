@@ -8,6 +8,8 @@ programming language and the Symfony full-stack framework.
 You can watch my YouTube video tutorial, which explains how Overblog GraphQL bundle can be used and how your own GraphQL server 
 implementations can be approached.
 
+YouTube video URL: https://youtu.be/q9A7lVw-CKM
+
 ## Project Setup
 
 ### Get the Project Up and Running by Makefile Commands
