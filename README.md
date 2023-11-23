@@ -10,8 +10,15 @@ implementations can be approached.
 
 ### Get the Project Up and Running by Makefile Commands
 Makefile commands are supported by Bash and ZSH out-of-the-box. This project leverages Docker for having all
-dependencies (like correct PHP version) in place.
+dependencies (like correct PHP version) in place. 
 
+#### Preparations
+Make sure you have installed 
+[Docker desktop](https://www.docker.com/products/docker-desktop/) upfront. Also a very first `composer install` on your
+host machine is necessary. Therefor you must have PHP and Composer installed on your host machine. There are lots of
+tutorials online about having a basic local PHP and Composer setup. Google is your friend here.
+
+#### Setup
 1. You must install all Composer packages initially via `composer install` on your host machine. Simply go to the 
 `symfony` folder in your terminal and execute `composer install`.
 2. Afterwards you'll be able to run the setup by executing `make container_run`
