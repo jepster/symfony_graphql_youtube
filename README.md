@@ -1,5 +1,7 @@
 # Symfony PHP GraphQL Server Example Project
 
+DISCLAIMER: This repo is for educational purposes.
+
 This project acts as an example for setting up a GraphQL server via the 
 [overblog/graphql-bundle Composer PHP package](https://github.com/overblog/GraphQLBundle). This is based on the PHP 
 programming language and the Symfony full-stack framework.
