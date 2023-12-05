@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../vendor/phpunit/phpunit/phpunit.xsd"
+         failOnEmptyTestSuite="true"
+         failOnWarning="true"
+         failOnRisky="true"
+         failOnDeprecation="true"
+         failOnNotice="true"
+         failOnSkipped="false"
+         failOnIncomplete="true"
+         beStrictAboutChangesToGlobalState="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutCoverageMetadata="true"
+         requireCoverageMetadata="true"
+         reverseDefectList="true"
+         cacheResult="false"
+         executionOrder="depends,random"
+         colors="true"
+         bootstrap="../tests/bootstrap.php">
+
+    <testsuites>
+        <testsuite name="unit">
+            <directory>../tests/unit</directory>
+        </testsuite>
+        <testsuite name="edge-to-edge">
+            <directory>../tests/edge-to-edge</directory>
+        </testsuite>
+        <testsuite name="edge-to-edge-manually">
+            <directory>../tests/edge-to-edge-manually</directory>
+        </testsuite>
+        <testsuite name="integration">
+            <directory>../tests/integration</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory suffix=".php">../src</directory>
+        </include>
+    </source>
+
+    <coverage>
+        <report>
+            <html outputDirectory="../var/coverage-report-html" lowUpperBound="60" highLowerBound="100"/>
+            <xml outputDirectory="../var/coverage-report-xml"/>
+            <text outputFile="php://stdout" showOnlySummary="true"/>
+        </report>
+    </coverage>
+
+    <php>
+        <env name="APP_ENV" value="test" force="true" />
+        <env name="APP_DEBUG" value="0" force="true" />
+        <ini name="display_errors" value="1" />
+        <ini name="display_startup_errors" value="-1" />
+    </php>
+
+</phpunit>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="phpcs-ruleset">
+
+    <description/>
+
+    <arg name="colors"/>
+    <arg value="p"/>
+    <arg value="s"/>
+
+    <arg name="error-severity" value="1"/>
+    <arg name="warning-severity" value="1"/>
+
+    <rule ref="PSR12">
+        <exclude name="PSR2.Classes.PropertyDeclaration.SpacingAfterType"/>
+    </rule>
+
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"/> <!-- There must be only on statement per line. -->
+    <rule ref="Generic.Formatting.MultipleStatementAlignment"/> <!-- If there are multiple adjacent assignments, the equals signs of each assignment have to be aligned. -->
+    <rule ref="Generic.CodeAnalysis.EmptyStatement"/> <!-- This sniff class detected empty statement. -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/> <!-- Bans the use of the PHP long array syntax. -->
+    <rule ref="Generic.CodeAnalysis.AssignmentInCondition"/> <!-- Detects variable assignments being made within conditions. -->
+    <rule ref="Generic.Files.InlineHTML"/> <!-- Ensures the whole file is PHP only, with no whitespace or inline HTML. -->
+    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/> <!-- Checks for unused function parameters. -->
+
+    <rule ref="Generic.Files.LineLength"> <!-- Checks the length of all lines in a file. -->
+        <properties>
+            <property name="lineLimit" value="140"/>
+            <property name="absoluteLineLimit" value="140"/>
+        </properties>
+    </rule>
+
+    <rule ref="Generic.Formatting.NoSpaceAfterCast"/> <!-- Ensures there is no space after cast tokens. -->
+
+    <rule ref="Generic.Metrics.CyclomaticComplexity"> <!-- Checks the cyclomatic complexity (McCabe) for functions. -->
+        <properties>
+            <property name="complexity" value="5"/>
+            <property name="absoluteComplexity" value="5"/>
+        </properties>
+    </rule>
+
+    <rule ref="Generic.Metrics.NestingLevel"> <!-- Checks the nesting level for methods. -->
+        <properties>
+            <property name="nestingLevel" value="3"/>
+            <property name="absoluteNestingLevel" value="3"/>
+        </properties>
+    </rule>
+
+    <rule ref="Generic.PHP.DeprecatedFunctions"/> <!-- Discourages the use of deprecated PHP functions. -->
+    <rule ref="Generic.PHP.NoSilencedErrors"/> <!-- Throws an error or warning when any code prefixed with an asperand is encountered. -->
+    <rule ref="Generic.PHP.RequireStrictTypes"/> <!-- Checks that the strict_types has been declared. -->
+    <rule ref="Generic.PHP.ForbiddenFunctions"/> <!-- Discourages the use of alias functions. -->
+
+    <rule ref="Squiz.PHP.DiscouragedFunctions"> <!-- Discourages the use of debug functions. -->
+        <properties>
+            <property name="error" value="true"/>
+        </properties>
+    </rule>
+    <rule ref="Squiz.PHP.Eval"/> <!-- The use of eval() is discouraged. -->
+
+    <rule ref="Squiz.NamingConventions.ValidVariableName.NotCamelCaps"/> <!-- variable name must be in camel caps format -->
+    <rule ref="Squiz.PHP.NonExecutableCode"/> <!-- Warns about code that can never been executed. -->
+    <rule ref="Squiz.Scope.StaticThisUsage"/> <!-- Checks for usage of $this in static methods, which will cause runtime errors. -->
+</ruleset>

@@ -1,7 +1,7 @@
 
 # Definitions
 #############
-export PROJECT_NAME=symfony_graphql_youtube
+export PROJECT_NAME=protocol-api
 
 DOCKER_EXEC=docker exec $(PROJECT_NAME)_php bash -c
 
@@ -46,3 +46,48 @@ container_bash:
 
 container_logs:
 	docker logs --follow $(PROJECT_NAME)_php
+
+# Run tests
+###########
+test: test_phpstan test_phpcs test_phpunit test_phpunit_e2e test_phpunit_integration test_infection
+
+test_pre_push: test_phpstan test_phpcs test_phpunit test_phpunit_integration test_phpunit_e2e
+
+test_phpstan:
+	$(DOCKER_EXEC) "vendor/bin/phpstan analyse --configuration=./settings/phpstan.neon --level=$(PHPSTAN_LVL)"
+
+test_phpcs:
+	$(DOCKER_EXEC) "vendor/bin/phpcs --standard=./settings/phpcs.xml src/ tests/"
+
+test_phpunit:
+	$(DOCKER_EXEC) "vendor/bin/phpunit -c ./settings --testsuite unit"
+
+test_phpunit_integration:
+	$(DOCKER_EXEC) "vendor/bin/phpunit -c ./settings --testsuite integration --no-coverage"
+
+test_phpunit_integration_filter:
+	$(DOCKER_EXEC) "vendor/bin/phpunit -c ./settings --testsuite integration --no-coverage --filter=${filter}"
+
+test_phpunit_e2e:
+	$(DOCKER_EXEC) "vendor/bin/phpunit -c ./settings --testsuite edge-to-edge --no-coverage"
+
+test_phpunit_e2e_manually:
+	$(DOCKER_EXEC) "vendor/bin/phpunit -c ./settings --testsuite edge-to-edge-manually --no-coverage"
+
+test_phpunit_e2e_manually_filter:
+	$(DOCKER_EXEC) "vendor/bin/phpunit -c ./settings --testsuite edge-to-edge-manually --no-coverage --filter=${filter}"
+
+test_phpunit_e2e_filter:
+	$(DOCKER_EXEC) "vendor/bin/phpunit -c ./settings --testsuite edge-to-edge --no-coverage --filter=${filter}"
+
+test_phpunit_coverage_filter:
+	$(DOCKER_EXEC) "vendor/bin/phpunit -c ./settings --colors=always --coverage-text --filter=${filter}"
+
+test_phpunit_coverage:
+	$(DOCKER_EXEC) "vendor/bin/phpunit -c ./settings --colors=always --coverage-text --testsuite unit"
+
+test_infection:
+	$(DOCKER_EXEC) "vendor/bin/infection --configuration=./settings/infection.json5 --threads=max --only-covered"
+
+test_infection_filter:
+	$(DOCKER_EXEC) "vendor/bin/infection --configuration=./settings/infection.json5 --threads=max --filter=${filter}"

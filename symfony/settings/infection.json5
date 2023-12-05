@@ -1,0 +1,23 @@
+{
+    "source": {
+        "directories": [
+            "src"
+        ],
+    },
+    "timeout": 10,
+    "logs": {
+        "html": "../var/infection.html"
+    },
+    "tmpDir": "../var",
+    "phpUnit": {
+        "configDir": ".",
+    },
+    "minMsi": 18.0,
+    "minCoveredMsi": 91.0,
+    "testFrameworkOptions": "--testsuite=unit",
+    "mutators": {
+        "@default": true,
+        "CastString": false,
+        "CastArray": false
+    }
+}
